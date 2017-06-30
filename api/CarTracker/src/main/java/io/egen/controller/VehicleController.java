@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://mocker.egen.io", maxAge = 3600)
-@RequestMapping(value="/vehicles")
 public class VehicleController {
 
     @Autowired
@@ -23,17 +22,15 @@ public class VehicleController {
         return vehicleService.findAll();
     }
 
-    /*@RequestMapping(method = RequestMethod.POST,value="/readings", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public void update(@RequestBody Reading reading)
-    {
-        vehicleService.updateReading(reading);
-
-    }*/
-
-
-   @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT,value="/vehicles")
     public void load(@RequestBody List<Vehicle> vehicles) {
         vehicleService.load(vehicles);
-   }
+    }
+
+    @RequestMapping(method = RequestMethod.POST,value="/readings")
+    public void update(@RequestBody Reading reading){
+        //System.out.println(reading);
+        vehicleService.updateReading(reading);
+    }
 
 }

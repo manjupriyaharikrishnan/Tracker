@@ -44,6 +44,7 @@ public class VehicleServiceImplementation implements VehicleService {
         return vehicles;
     }
 
+    @Transactional
     public Reading updateReading(Reading reading) {
         return repository.updateReading(reading);
     }

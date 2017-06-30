@@ -26,6 +26,7 @@ package io.egen.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Reading {
@@ -39,7 +40,7 @@ public class Reading {
     public String speed;
     public String engineHp;
     public String checkEngineLightOn;
-    public String engineCollantLow;
+    public String engineCoolantLow;
     public String cruiseControlOn;
     public String engineRpm;
 
@@ -111,11 +112,11 @@ public class Reading {
     }
 
     public String getEngineCollantLow() {
-        return engineCollantLow;
+        return engineCoolantLow;
     }
 
     public void setEngineCollantLow(String engineCollantLow) {
-        this.engineCollantLow = engineCollantLow;
+        this.engineCoolantLow = engineCollantLow;
     }
 
     public String getCruiseControlOn() {
@@ -138,6 +139,7 @@ public class Reading {
         return tires;
     }
 
+    @Transient
     public void setTires(Tires tires) {
         this.tires = tires;
     }
@@ -154,7 +156,7 @@ public class Reading {
                 ", speed='" + speed + '\'' +
                 ", engineHp='" + engineHp + '\'' +
                 ", checkEngineLightOn='" + checkEngineLightOn + '\'' +
-                ", engineCollantLow='" + engineCollantLow + '\'' +
+                ", engineCollantLow='" + engineCoolantLow + '\'' +
                 ", cruiseControlOn='" + cruiseControlOn + '\'' +
                 ", engineRpm='" + engineRpm + '\'' +
                 ", tires=" + tires +

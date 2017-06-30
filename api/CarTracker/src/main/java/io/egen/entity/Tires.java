@@ -2,6 +2,7 @@ package io.egen.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.UUID;
 
 /*
 "tires": {
@@ -20,6 +21,17 @@ public class Tires {
     private int frontRight;
     private int rearLeft;
     private int rearRight;
+
+    public Tires(){
+        this.vin = UUID.randomUUID().toString();
+    }
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
 
     public int getFrontLeft() {
         return frontLeft;

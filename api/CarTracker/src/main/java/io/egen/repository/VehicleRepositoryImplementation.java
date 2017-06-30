@@ -1,6 +1,7 @@
 package io.egen.repository;
 
 import io.egen.entity.Reading;
+import io.egen.entity.Tires;
 import io.egen.entity.Vehicle;
 import io.egen.service.VehicleService;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,8 @@ public class VehicleRepositoryImplementation implements VehicleRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+
 
     public List<Vehicle> findAll() {
         TypedQuery<Vehicle> query = entityManager.createNamedQuery("Vehicle.findAll", Vehicle.class);
@@ -31,9 +34,10 @@ public class VehicleRepositoryImplementation implements VehicleRepository {
     }
 
     public Reading updateReading(Reading reading) {
+        //Tires tire = reading.getTires();
         entityManager.persist(reading.getTires());
+        //reading.setTires(tire);
         entityManager.persist(reading);
-
         return reading;
     }
 
