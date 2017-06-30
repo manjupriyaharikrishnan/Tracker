@@ -1,5 +1,8 @@
 package io.egen.entity;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -14,13 +17,17 @@ import javax.persistence.OneToOne;
     "lastServiceDate": "2017-05-25T17:31:25.268Z"
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Vehicle.findAll",
+                query = "SELECT car FROM Vehicle car")
+})
 public class Vehicle {
     @Id
     private String vin;
     private String make;
     private String model;
     private String year;
-    private String redLineRpm;
+    private String redlineRpm;
     private String maxFuelVolume;
     private String lastServiceDate;
 
@@ -57,11 +64,11 @@ public class Vehicle {
     }
 
     public String getRedLineRpm() {
-        return redLineRpm;
+        return redlineRpm;
     }
 
     public void setRedLineRpm(String redLineRpm) {
-        this.redLineRpm = redLineRpm;
+        this.redlineRpm = redLineRpm;
     }
 
     public String getMaxFuelVolume() {
@@ -87,7 +94,7 @@ public class Vehicle {
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", year='" + year + '\'' +
-                ", redLineRpm='" + redLineRpm + '\'' +
+                ", redLineRpm='" + redlineRpm + '\'' +
                 ", maxFuelVolume='" + maxFuelVolume + '\'' +
                 ", lastServiceDate='" + lastServiceDate + '\'' +
                 '}';

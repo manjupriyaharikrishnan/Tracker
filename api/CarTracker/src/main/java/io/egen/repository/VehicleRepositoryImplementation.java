@@ -7,32 +7,38 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
 public class VehicleRepositoryImplementation implements VehicleRepository {
 
     @PersistenceContext
-    private EntityManager em;
+    private EntityManager entityManager;
+
+    public List<Vehicle> findAll() {
+        TypedQuery<Vehicle> query = entityManager.createNamedQuery("Vehicle.findAll", Vehicle.class);
+        return query.getResultList();
+    }
 
     public Vehicle find(String vin) {
-        return null;
+        return entityManager.find(Vehicle.class, vin);
     }
 
     public Vehicle load(Vehicle vehicle) {
-        em.persist(vehicle);
+        entityManager.persist(vehicle);
         return vehicle;
     }
 
     public Reading updateReading(Reading reading) {
-        em.persist(reading.getTires());
-        em.persist(reading);
+        entityManager.persist(reading.getTires());
+        entityManager.persist(reading);
 
         return reading;
     }
 
     public Vehicle update(Vehicle vehicle) {
-        return em.merge(vehicle);
+        return entityManager.merge(vehicle);
     }
 
 }

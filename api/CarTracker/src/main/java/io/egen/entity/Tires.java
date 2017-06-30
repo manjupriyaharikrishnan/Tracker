@@ -1,6 +1,8 @@
 package io.egen.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /*
 "tires": {
       "frontLeft": 34,
@@ -11,6 +13,9 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Tires {
+
+    @Id
+    private String vin;
     private int frontLeft;
     private int frontRight;
     private int rearLeft;

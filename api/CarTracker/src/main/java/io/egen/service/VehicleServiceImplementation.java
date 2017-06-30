@@ -15,6 +15,11 @@ public class VehicleServiceImplementation implements VehicleService {
     @Autowired
     VehicleRepository repository;
 
+    @Transactional(readOnly = true)
+    public List<Vehicle> findAll() {
+        return repository.findAll();
+    }
+
     public Vehicle find(String vin) {
         Vehicle existing = repository.find(vin);
         if (existing != null) {

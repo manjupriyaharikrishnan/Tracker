@@ -18,16 +18,22 @@ public class VehicleController {
     @Autowired
     VehicleService vehicleService;
 
-    @RequestMapping(method = RequestMethod.POST,value="/readings", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Vehicle> findAll() {
+        return vehicleService.findAll();
+    }
+
+    /*@RequestMapping(method = RequestMethod.POST,value="/readings", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void update(@RequestBody Reading reading)
     {
         vehicleService.updateReading(reading);
 
-    }
+    }*/
 
 
-    @RequestMapping(method = RequestMethod.PUT,value = "/vehicles",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+   @RequestMapping(method = RequestMethod.PUT)
     public void load(@RequestBody List<Vehicle> vehicles) {
-      vehicleService.load(vehicles);
-    }
+        vehicleService.load(vehicles);
+   }
+
 }
